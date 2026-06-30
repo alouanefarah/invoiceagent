@@ -1,0 +1,89 @@
+:root {
+  --bg-base:       #0F1117;
+  --bg-surface:    #181B24;
+  --bg-elevated:   #1E2230;
+  --bg-hover:      #252A3A;
+
+  --accent:        #6C63FF;
+  --accent-dim:    #6C63FF22;
+  --success:       #22C55E;
+  --success-dim:   #22C55E1A;
+  --warning:       #F59E0B;
+  --warning-dim:   #F59E0B1A;
+  --danger:        #EF4444;
+  --danger-dim:    #EF44441A;
+
+  --text-primary:  #E2E8F0;
+  --text-secondary:#94A3B8;
+  --text-muted:    #475569;
+  --border:        #252A3A;
+  --border-subtle: #1E2230;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 4px;
+  --radius:    8px;
+  --radius-lg: 12px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #app {
+  height: 100%;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Utilities */
+.mono { font-family: var(--font-mono); }
+.text-muted { color: var(--text-secondary); }
+
+/* Status badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.badge.pending    { background: var(--bg-elevated); color: var(--text-secondary); }
+.badge.processing { background: var(--accent-dim);  color: var(--accent); }
+.badge.validated  { background: var(--success-dim); color: var(--success); }
+.badge.anomaly    { background: var(--danger-dim);  color: var(--danger); }
+
+/* Pulse animation for processing */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+.pulse { animation: pulse-dot 1.4s ease-in-out infinite; }
+
+/* Skeleton loader */
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-surface) 25%, var(--bg-elevated) 50%, var(--bg-surface) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* Drag-and-drop active */
+.drop-active { border-color: var(--accent) !important; background: var(--accent-dim) !important; }
