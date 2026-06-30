@@ -1,4 +1,4 @@
-# InvoiceAgent — Semaine 2 : Pipeline OCR
+# InvoiceAgent — : Pipeline OCR
 
 ## Prérequis
 - Docker + Docker Compose
